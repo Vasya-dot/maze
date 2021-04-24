@@ -2,7 +2,7 @@
 #include <vector>
 
 using namespace std;
-enum class field
+enum class eFeld
 {
     TRAP, //#
     RELIC, //R
@@ -10,7 +10,7 @@ enum class field
     WELL //колодец?
 };
 
-class Field
+class eMap
 {
 public:
     Field(uint8_t size, uint8_t RelicsNumber);
