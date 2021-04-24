@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
-
+*.log
+[Bb]in*/*
+[Dd]ebug*/*
+[Rr]elease*/
 # Compiled Object files
 *.slo
 *.lo
@@ -30,3 +33,9 @@
 *.exe
 *.out
 *.app
+*.pdb
+*.recipe
+*.tlog
+*.lastbuildstate
+*.idb
+*.vcxproj.user
