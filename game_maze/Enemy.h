@@ -1,24 +1,18 @@
 #pragma once
+#include "unit.h"
 
-#include <vector>
-
-using namespace std;
-
-//create class iUnit with pure virtual function Move
-//use inheritance to enemy and player
-
-
-class Enemy
+class eEnemy : private  eUnit
 {
 public:
-    Enemy();
-    Enemy(const Enemy&)  = delete;
-    Enemy(Enemy&&)       = delete;
-    virtual ~Enemy()     = default;
+	eEnemy();
+	eEnemy(const eEnemy&) = default;
+	eEnemy(eEnemy&&) = default;
+	virtual ~eEnemy() = default;
 
-    virtual void Move();
+	eEnemy& operator=(const eEnemy&) = default;
+	eEnemy& operator=(eEnemy&&) = default;
 
-protected:
-    uint8_t   Damage = 1;
-    
+	int randomMove();
+private:
+	int                  attackDmg_ = 1;
 };

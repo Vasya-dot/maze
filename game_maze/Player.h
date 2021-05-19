@@ -1,33 +1,22 @@
 #pragma once
+#include "unit.h"
 
-#include <map>
-#include <string>
-#include <iostream>
-
-using namespace std;
-
-class Player
+class ePlayer : private  eUnit
 {
 public:
-    
-    Player(uint8_t CoordinateX = 0, uint8_t CoordinateY = 0);
-    Player() = default;
-    Player(const Player&) = default;
-    Player(Player&&) = default;
-    virtual ~Player() = default;
 
-    void MoveUp();
-    void MoveDown();
-    void MoveLeft();
-    void MoveRight();
+	ePlayer();
+	ePlayer(const ePlayer&) = default;
+	ePlayer(ePlayer&&) = default;
+	virtual ~ePlayer() = default;
 
-    void ReceivedDamage(uint8_t _damageId);
-    void HealRegen(uint8_t _regenId);
+	ePlayer& operator=(const ePlayer&) = default;
+	ePlayer& operator=( ePlayer&&) = default;
 
-protected:
-    uint8_t               Health           = 5;
-    uint8_t               CollectedRelics  = 0;
-    int                   CoordinateX      = 0;
-    int                   CoordinateY      = 0;
-    map<uint8_t,string>   inventory;
+	void healRegen(int _healRegenId);
+	void takenDmg(int _takenDmg);
+
+private:
+	int                  heal_ = 5;
+	map<uint8_t, string> playerInventory_;
 };

@@ -15,27 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>1.common</Filter>
-    </ClCompile>
-    <ClCompile Include="Field.cpp">
-      <Filter>1.common</Filter>
-    </ClCompile>
     <ClCompile Include="game_maze.cpp">
       <Filter>1.common</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="unit.cpp">
       <Filter>1.common</Filter>
+    </ClCompile>
+    <ClCompile Include="map.cpp">
+      <Filter>1.common</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>0.types</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>0.types</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enemy.h">
+    <ClInclude Include="unit.h">
       <Filter>1.common</Filter>
     </ClInclude>
-    <ClInclude Include="Field.h">
-      <Filter>1.common</Filter>
+    <ClInclude Include="stdafx.h">
+      <Filter>3.tools</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="enemy.h">
+      <Filter>0.types</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>0.types</Filter>
+    </ClInclude>
+    <ClInclude Include="map.h">
       <Filter>1.common</Filter>
     </ClInclude>
   </ItemGroup>
