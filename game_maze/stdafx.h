@@ -1,11 +1,8 @@
+#pragma once
+
 #include <map>
 #include <string>
+#include <sstream>
 #include <iostream>
+#include <vector>
 using namespace std;
-enum class eField
-{
-    TRAP, //#
-    RELIC, //R
-    EMPTY, // o
-    WELL //колодец?
-};

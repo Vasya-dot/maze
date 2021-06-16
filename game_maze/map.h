@@ -1,37 +1,31 @@
 #pragma once
+
 #include "stdafx.h"
-#include <vector>
-
-using namespace std;
-
+#include "field.h"
 
 class eMap
 {
 public:
-    eMap(uint8_t size, uint8_t RelicsNumber);
-    eMap(const eMap&) = delete;
-    eMap(eMap&&) = delete;
-    virtual ~eMap() = default;
+//    eMap(uint8_t cols, uint8_t rows);
+    eMap()                                            = default;
+    eMap(const eMap&)                                 = delete;
+    eMap(eMap&&)                                      = delete;
+    virtual ~eMap()                                   = default;
 
-    void generateMap(uint8_t _size, uint8_t _relicsNumber, eField _field);
-    void cellValue(int coordinateX_,int coordinateY_, eField _field);
-    /*
-      1X 2X 3X 4X 5X 6X 
-      2X  X  X  X  X  X 
-      3X  X  X  X  X  X
-      4X  X  X  X  X  X
-      5X  X  X  X  X  X
-      6X  X  X  X  X  X
-     */
+    eMap&       operator=(const eMap&)                = delete;
+    eMap&       operator=(eMap&&)                     = delete;
 
-    void dump();
+    bool        Init();
+    //todo:
+    eFieldType  Get(size_t coordinateX, size_t coordinateY) const;
+    size_t      Count(eFieldType) const;
+    
+    uint8_t      Cols() const { return cols_ ; }
+    uint8_t      Rows() const { return rows_ ; }
 
-
+    string      Dump() const;
 protected:
-
-    int                    coordinateX_ = 0;
-    int                    coordinateY_ = 0;
-    vector<vector<eMap>>  fields_;    
-    uint8_t               relicsNumber_ = 2;
-    uint8_t               size_ = 6;
+    vector<vector<eFieldType>>  fields_;
+    uint8_t                     cols_ = 6;
+    uint8_t                     rows_ = 5;
 };

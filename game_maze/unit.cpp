@@ -1,12 +1,10 @@
 #include "unit.h"
-void eUnit::moveUp()
+bool eUnit::Init(eMap* _map)
 {
-	if (coordinateY_ == 1)
-	{
-		coordinateY_ = 1;
-	}
-	else
-	{
-		coordinateY_++;
-	}
+	map_ = _map;
+	return map_;
+}
+void eUnit::Done()
+{
+	eMap* map_ = nullptr;
 }

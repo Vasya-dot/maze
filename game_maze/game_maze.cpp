@@ -2,12 +2,16 @@
 //
 
 #include <iostream>
-
+#include "map.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+    eMap map;
+    map.Init();
+    cout << map.Dump();
+    cout << (int)map.Get(1, 2) << endl;
+    cout << map.Count(eFieldType::RELIX) << endl;
 }
 

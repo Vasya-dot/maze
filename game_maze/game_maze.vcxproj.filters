@@ -15,12 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="game_maze.cpp">
-      <Filter>1.common</Filter>
-    </ClCompile>
-    <ClCompile Include="unit.cpp">
-      <Filter>1.common</Filter>
-    </ClCompile>
     <ClCompile Include="map.cpp">
       <Filter>1.common</Filter>
     </ClCompile>
@@ -30,11 +24,17 @@
     <ClCompile Include="player.cpp">
       <Filter>0.types</Filter>
     </ClCompile>
+    <ClCompile Include="field.cpp">
+      <Filter>0.types</Filter>
+    </ClCompile>
+    <ClCompile Include="unit.cpp">
+      <Filter>0.types</Filter>
+    </ClCompile>
+    <ClCompile Include="game_maze.cpp">
+      <Filter>1.common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="unit.h">
-      <Filter>1.common</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>3.tools</Filter>
     </ClInclude>
@@ -46,6 +46,12 @@
     </ClInclude>
     <ClInclude Include="map.h">
       <Filter>1.common</Filter>
+    </ClInclude>
+    <ClInclude Include="field.h">
+      <Filter>0.types</Filter>
+    </ClInclude>
+    <ClInclude Include="unit.h">
+      <Filter>0.types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
