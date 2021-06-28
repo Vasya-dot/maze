@@ -3,18 +3,30 @@
 
 bool eMap::Init()
 {
-	vector<eFieldType> line0 = { eFieldType::EMPTY, eFieldType::FINISH, eFieldType::RELIX, eFieldType::TRAP, eFieldType::TRAP };
-	vector<eFieldType> line1 = { eFieldType::EMPTY, eFieldType::EMPTY, eFieldType::EMPTY, eFieldType::EMPTY, eFieldType::EMPTY };
-	vector<eFieldType> line2 = { eFieldType::EMPTY, eFieldType::EMPTY, eFieldType::RELIX, eFieldType::TRAP, eFieldType::TRAP };
-	vector<eFieldType> line3 = { eFieldType::RELIX, eFieldType::RELIX, eFieldType::RELIX, eFieldType::RELIX, eFieldType::RELIX };
-	vector<eFieldType> line4 = { eFieldType::RELIX, eFieldType::RELIX, eFieldType::RELIX, eFieldType::RELIX, eFieldType::RELIX };
-	vector<eFieldType> line5 = { eFieldType::EMPTY, eFieldType::EMPTY, eFieldType::EMPTY, eFieldType::TRAP, eFieldType::START };
-	fields_.emplace_back(line0);
-	fields_.emplace_back(line1);
-	fields_.emplace_back(line2);
-	fields_.emplace_back(line3);
-	fields_.emplace_back(line4);
-	fields_.emplace_back(line5);
+	map<eFieldType, int > countTexturs = GetTextures(cols_, rows_);
+	ranlux48 generator;
+	normal_distribution<float> distribution((float)eFieldType::BEGIN, (float)eFieldType::TOTAL_COUNT);
+
+	int r = 0;
+	for (int i = 0; i < cols_; i++)
+	{
+		vector<eFieldType> line;
+		for (int j = 0; j < rows_; j++)
+		{
+			while(true)
+			{
+				r = distribution(generator);
+				//r = rand() % (int(eFieldType::TOTAL_COUNT));
+				if (countTexturs[(eFieldType)r] > 0)
+				{
+					countTexturs[(eFieldType)r]--;
+					break;
+				}
+			} 
+			 line.emplace_back((eFieldType)r);
+		}
+		fields_.emplace_back(line);
+	}
 
 	return true;
 }
@@ -36,9 +48,9 @@ eFieldType eMap::Get(size_t coordinateX, size_t coordinateY) const
 size_t eMap::Count(eFieldType type) const
 {
 	int counter = 0;
-	for (int i = 0; i < cols_; i++)
+	for (int i = 0; i < fields_.size(); i++)
 	{
-		for (int j = 0; j < rows_; j++)
+		for (int j = 0; j < fields_[i].size (); j++)
 		{
 			if (fields_[i][j] == type)
 			{
@@ -62,4 +74,29 @@ string eMap::Dump() const
 		ss << endl;
 	}
 	return ss.str();
+}
+
+bool    eMap::Save(ostream& oss) const
+{
+	oss << cols_<<"\t"<<rows_;
+	oss << Dump();
+	return true;
+}
+
+bool eMap::Load(istream& iss)
+{
+	iss >> cols_ >> rows_;
+	fields_.clear();
+	string txt;
+	for (int i = 0; i < cols_; i++)
+	{
+		vector<eFieldType> line;
+		for (int j = 0; j < rows_; j++)
+		{
+			iss >> txt;
+			line.emplace_back(FromString(txt));
+		}
+		fields_.emplace_back(line);
+	}
+	return true;
 }

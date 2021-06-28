@@ -24,8 +24,11 @@ public:
     uint8_t      Rows() const { return rows_ ; }
 
     string      Dump() const;
+
+    bool        Save(ostream&) const;
+    bool        Load(istream&);
 protected:
     vector<vector<eFieldType>>  fields_;
-    uint8_t                     cols_ = 6;
-    uint8_t                     rows_ = 5;
+    uint8_t                     cols_ = 20;
+    uint8_t                     rows_ = 20;
 };

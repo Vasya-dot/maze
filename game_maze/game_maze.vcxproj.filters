@@ -56,5 +56,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="code_convention.txt" />
+    <Text Include="1.txt" />
   </ItemGroup>
 </Project>
