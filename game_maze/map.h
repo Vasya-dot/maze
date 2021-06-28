@@ -3,6 +3,8 @@
 #include "stdafx.h"
 #include "field.h"
 
+class eUnit;
+
 class eMap
 {
 public:
@@ -27,8 +29,12 @@ public:
 
     bool        Save(ostream&) const;
     bool        Load(istream&);
+
+    bool Register(eUnit*);
+    bool Unregister(eUnit*);
 protected:
     vector<vector<eFieldType>>  fields_;
     uint8_t                     cols_ = 20;
     uint8_t                     rows_ = 20;
+    vector<eUnit*>               units_;
 };

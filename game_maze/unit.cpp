@@ -1,10 +1,15 @@
 #include "unit.h"
+
 bool eUnit::Init(eMap* _map)
 {
 	map_ = _map;
-	return map_;
+	x = rand() % 5;
+	y = rand() % 5;
+	return map_ && map_->Register(this);
 }
+
 void eUnit::Done()
 {
-	eMap* map_ = nullptr;
+	map_->Unregister(this);
+    map_ = nullptr;
 }

@@ -1,5 +1,7 @@
 #include "map.h"
 #include "stdafx.h"
+#include "unit.h"
+#include <algorithm>
 
 bool eMap::Init()
 {
@@ -15,7 +17,7 @@ bool eMap::Init()
 		{
 			while(true)
 			{
-				r = distribution(generator);
+				r = distribution (generator);
 				//r = rand() % (int(eFieldType::TOTAL_COUNT));
 				if (countTexturs[(eFieldType)r] > 0)
 				{
@@ -69,7 +71,20 @@ string eMap::Dump() const
 	{
 		for (size_t j = 0; j < fields_[i].size(); ++j)
 		{
-			ss << ToString(fields_[i][j]) << " ";
+			auto it = find_if(units_.cbegin(), units_.cend(), [x = i,y = j](eUnit* item)
+				{
+					return x == item->GetX() && y == item->GetY();
+				});
+			if (it != units_.cend())
+			{
+				ss <<(*it)->ToString() << " ";
+
+			}
+			else
+			{
+                ss << ToString(fields_[i][j]) << " ";
+			}
+			
 		}
 		ss << endl;
 	}
@@ -98,5 +113,25 @@ bool eMap::Load(istream& iss)
 		}
 		fields_.emplace_back(line);
 	}
+	return true;
+}
+
+bool eMap::Register(eUnit* unit)
+{
+	auto it = find_if(units_.cbegin(), units_.cend(), [unit](eUnit* item)
+		{return unit == item; });
+	if (it != units_.cend())
+	{
+		return false;
+	}
+	units_.emplace_back(unit);
+	return true;
+}
+
+bool eMap::Unregister(eUnit* unit)
+{
+	auto it = remove_if(units_.begin(), units_.end(), [unit](eUnit* item)
+		               {return unit == item; });
+	units_.erase(it, units_.end());
 	return true;
 }

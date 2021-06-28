@@ -6,7 +6,7 @@ class ePlayer : public eUnit
 {
 	using eBase = eUnit;
 public:
-	ePlayer();
+	ePlayer() = default;
 	ePlayer(const ePlayer&) = default;
 	ePlayer(ePlayer&&) = default;
 	virtual ~ePlayer() = default;
@@ -14,11 +14,9 @@ public:
 	ePlayer& operator=(const ePlayer&) = default;
 	ePlayer& operator=( ePlayer&&) = default;
 
-	virtual bool Init(eMap*);
-	virtual string ToString() const  override { return "P";  };
-	virtual void Move(eMoveType type) = 0;
-	virtual bool CanMove(eMoveType type) const = 0;
-
+	virtual string ToString()            const override { return "p"; }
+	virtual void Move(eMoveType type)          override { return; }
+	virtual bool CanMove(eMoveType type) const override { return true; }
 
 //	void healRegen(int _healRegenId);
 //	void takenDmg(int _takenDmg);

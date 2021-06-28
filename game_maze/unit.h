@@ -27,9 +27,11 @@ public:
     virtual void Move(eMoveType type)           = 0;
     virtual bool CanMove(eMoveType type) const  = 0;
 
+    int GetX() const { return x; }
+    int GetY() const { return y; }
 protected:
     eMap*  map_ = nullptr;
-    size_t x = 0;
-    size_t y = 0;
+    int x = 0;
+    int y = 0;
 
 };

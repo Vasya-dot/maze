@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include "map.h"
+#include "player.h"
+#include "enemy.h"
 
 
 using namespace std;
@@ -10,9 +12,24 @@ using namespace std;
 int main()
 {
     eMap map;
+    ePlayer player;
+    eEnemy enemy;
+    player.Init(&map);
+    enemy.Init(&map);
+    
     map.Init();
     cout << map.Dump();
-    cout << (int)map.Get(1, 2) << endl;
+    cout << endl;
+    for (int i = 0; i < 5; i++)
+    {
+        enemy.Move();
+        cout << map.Dump();
+        cout << endl;
+  
+    }
+
+    //cout << (int)map.Get(1, 2) << endl;
+    /*
     ofstream ofs("2.txt");
     if(ofs.is_open())
     {
@@ -26,7 +43,9 @@ int main()
         map1.Load(ifs);
     }
     ifs.close();
-    cout << map1.Dump();
-    cout << map.Count(eFieldType::RELIX) << endl;
+    */
+    
+    //cout << map1.Dump();
+    //cout << map.Count(eFieldType::RELIX) << endl;
 }
 
