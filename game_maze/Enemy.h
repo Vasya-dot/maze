@@ -4,24 +4,25 @@
 class eEnemy : public  eUnit
 {
 public:
-	eEnemy() = default;
-	eEnemy(const eEnemy&) = default;
-	eEnemy(eEnemy&&) = default;
-	virtual ~eEnemy() = default;
+	eEnemy()                         ;
+	eEnemy(const eEnemy&)            = default;
+	eEnemy(eEnemy&&)                 = default;
+	virtual ~eEnemy()                = default;
 
 	eEnemy& operator=(const eEnemy&) = default;
-	eEnemy& operator=(eEnemy&&) = default;
+	eEnemy& operator=(eEnemy&&)      = default;
 
 	virtual string ToString()            const override { return "e"; }
 	
-	bool Move();
+	virtual bool Move()                        override;
 
 protected:
-
+	virtual string Dump()                const override;
 	virtual void Move(eMoveType type)          override;
 	virtual bool CanMove(eMoveType type) const override;
 
 private:
-
+	static int idGenerator;
+	int id = 0;
 	int                  attackDmg_ = 1;
 };

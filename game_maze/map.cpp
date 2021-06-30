@@ -36,9 +36,9 @@ bool eMap::Init()
 eFieldType eMap::Get(size_t coordinateX, size_t coordinateY) const
 {
 	if (coordinateX < 0
-		|| coordinateX > cols_ 
+		|| coordinateX >= cols_ 
 		|| coordinateY < 0
-		||coordinateY > rows_)
+		||coordinateY >= rows_)
 	{
 		return eFieldType::EMPTY;
 	}
@@ -67,13 +67,17 @@ size_t eMap::Count(eFieldType type) const
 string eMap::Dump() const
 {
 	ostringstream ss;
+	for (eUnit* unit : units_)
+	{
+		ss << unit->Dump() << endl;
+	}
 	for (size_t i = 0; i < fields_.size(); ++i)
 	{
 		for (size_t j = 0; j < fields_[i].size(); ++j)
 		{
 			auto it = find_if(units_.cbegin(), units_.cend(), [x = i,y = j](eUnit* item)
 				{
-					return x == item->GetX() && y == item->GetY();
+					return x == item->GetX() && y == item->GetY() && item->IsAlive();
 				});
 			if (it != units_.cend())
 			{
@@ -134,4 +138,28 @@ bool eMap::Unregister(eUnit* unit)
 		               {return unit == item; });
 	units_.erase(it, units_.end());
 	return true;
+}
+
+void eMap::Move()
+{
+	for (eUnit* unit : units_)
+	{
+		if (unit->IsAlive())
+		{
+          unit->Move();
+		}
+		
+	}
+}
+
+void  eMap::Set(size_t coordinateX, size_t coordinateY, eFieldType type) 
+{
+	if (!
+		(coordinateX < 0
+		|| coordinateX >= cols_
+		|| coordinateY < 0
+		|| coordinateY >= rows_))
+	{
+		fields_[coordinateX][coordinateY] = type;
+	}
 }

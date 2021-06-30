@@ -143,6 +143,7 @@
     <ClCompile Include="field.cpp" />
     <ClCompile Include="game_maze.cpp" />
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="move_types.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="unit.cpp" />
   </ItemGroup>
@@ -150,6 +151,7 @@
     <ClInclude Include="enemy.h" />
     <ClInclude Include="field.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="move_types.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="unit.h" />

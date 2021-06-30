@@ -17,8 +17,11 @@ public:
 
 	bool Move(char g);
 
+	virtual bool Move()                        override;
+
+	string Dump() const;
 protected:
-	virtual void Move(eMoveType type)                 override;
+	virtual void Move(eMoveType type)          override;
 	virtual bool CanMove(eMoveType type) const override;
  
 private:

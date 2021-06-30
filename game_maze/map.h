@@ -20,18 +20,22 @@ public:
     bool        Init();
     //todo:
     eFieldType  Get(size_t coordinateX, size_t coordinateY) const;
+    void  Set(size_t coordinateX, size_t coordinateY, eFieldType type);
     size_t      Count(eFieldType) const;
     
-    uint8_t      Cols() const { return cols_ ; }
-    uint8_t      Rows() const { return rows_ ; }
+    uint8_t     Cols() const { return cols_ ; }
+    uint8_t     Rows() const { return rows_ ; }
 
     string      Dump() const;
 
     bool        Save(ostream&) const;
     bool        Load(istream&);
 
-    bool Register(eUnit*);
-    bool Unregister(eUnit*);
+    bool        Register(eUnit*);
+    bool        Unregister(eUnit*);
+
+    void        Move();
+
 protected:
     vector<vector<eFieldType>>  fields_;
     uint8_t                     cols_ = 20;

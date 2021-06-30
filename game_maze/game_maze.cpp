@@ -16,17 +16,13 @@ int main()
     eEnemy enemy;
     player.Init(&map);
     enemy.Init(&map);
-    char k;
     map.Init();
-    cout << map.Dump();
-    cout << endl;
-    for (int i = 0; i < 5; i++)
+    while (true)
     {
-        cin >> k;
-        player.Move(k);
-        cout << map.Dump();
-        cout << endl;
-  
+        system("cls");
+        cout << map.Dump() << endl;
+        
+        map.Move();
     }
 
     //cout << (int)map.Get(1, 2) << endl;

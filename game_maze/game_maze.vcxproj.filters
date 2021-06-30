@@ -33,6 +33,9 @@
     <ClCompile Include="game_maze.cpp">
       <Filter>1.common</Filter>
     </ClCompile>
+    <ClCompile Include="move_types.cpp">
+      <Filter>0.types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -51,6 +54,9 @@
       <Filter>0.types</Filter>
     </ClInclude>
     <ClInclude Include="unit.h">
+      <Filter>0.types</Filter>
+    </ClInclude>
+    <ClInclude Include="move_types.h">
       <Filter>0.types</Filter>
     </ClInclude>
   </ItemGroup>
