@@ -1,5 +1,4 @@
 #pragma once
-
 #include "unit.h"
 
 class ePlayer : public eUnit
@@ -15,13 +14,15 @@ public:
 	ePlayer& operator=( ePlayer&&) = default;
 
 	virtual string ToString()            const override { return "p"; }
-	virtual void Move(eMoveType type)          override { return; }
-	virtual bool CanMove(eMoveType type) const override { return true; }
 
-//	void healRegen(int _healRegenId);
-//	void takenDmg(int _takenDmg);
+	bool Move(char g);
 
+protected:
+	virtual void Move(eMoveType type)                 override;
+	virtual bool CanMove(eMoveType type) const override;
+ 
 private:
 	int                  hp_ = 5;
+	char                 g;
 //	map<uint8_t, string> playerInventory_;
 };

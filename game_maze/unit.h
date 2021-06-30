@@ -33,5 +33,5 @@ protected:
     eMap*  map_ = nullptr;
     int x = 0;
     int y = 0;
-
+    char g;
 };
